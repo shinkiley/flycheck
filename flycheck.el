@@ -9329,6 +9329,8 @@ This syntax checker requires Rust 1.15 or newer.  See URL
   :enabled (lambda ()
              (-when-let (file (buffer-file-name))
                (locate-dominating-file file "Cargo.toml")))
+  :working-directory (lambda (_)
+                       (locate-dominating-file (buffer-file-name) "Cargo.toml"))
   :verify (lambda (_)
             (-when-let (file (buffer-file-name))
               (let* ((has-toml (locate-dominating-file file "Cargo.toml"))
